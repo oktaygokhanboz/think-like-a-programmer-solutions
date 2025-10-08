@@ -12,6 +12,9 @@ function addRecord(collection, stuNumber, stuGrade) {
 }
 
 function averageRecord(collection) {
+  // Special case
+  if (collection.length === 0) return 0;
+
   const sum = collection.reduce((acc, stu) => acc + stu.grade, 0);
   return (sum / collection.length).toFixed(2);
 }
