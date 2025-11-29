@@ -8,6 +8,14 @@ class Automobile {
   setManufacturer(newManufacturer) {
     this.manufacturer = newManufacturer;
   }
+
+  setModel(newModel) {
+    this.model = newModel;
+  }
+
+  setYear(newYear) {
+    this.year = newYear;
+  }
 }
 
 const car = new Automobile("BMW", "iX3", 2022);
