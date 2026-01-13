@@ -1,39 +1,51 @@
-const list = {
+const data = {
+  value: 8,
   left: {
+    value: 4,
     left: {
+      value: 2,
       left: null,
-      data: 4,
       right: null,
     },
-    data: 7,
     right: {
+      value: 6,
       left: null,
-      data: 12,
       right: null,
     },
   },
-  data: 9,
   right: {
+    value: 12,
     left: {
+      value: 10,
       left: null,
-      data: 15,
       right: null,
     },
-    data: 18,
     right: {
+      value: 14,
       left: null,
-      data: 24,
       right: null,
     },
   },
 };
 
-function isBinarySearchTree(binaryTree) {
-  if (binaryTree === null) return true;
-  const { left, data, right } = binaryTree;
-  if (left && data <= left.data) return false;
-  if (right && data >= right.data) return false;
-  return isBinarySearchTree(left) && isBinarySearchTree(right);
+function isBST(node, min = -Infinity, max = Infinity) {
+  if (!node) return true;
+
+  if (node.value <= min || node.value >= max) {
+    return false;
+  }
+
+  return (
+    isBST(node.left, min, node.value) && isBST(node.right, node.value, max)
+  );
 }
 
-console.log(isBinarySearchTree(list));
+console.log(isBST(data)); // true
+
+/*
+     8
+   /   \
+  4     12
+ / \    / \
+2   6  10 14
+*/
